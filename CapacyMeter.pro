@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui svg multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -30,10 +30,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         main.cpp \
-        mainwindow.cpp
+        mainwindow.cpp \
+    measurementform.cpp \
+    plotform.cpp
 
 HEADERS += \
-        mainwindow.h
+        mainwindow.h \
+    measurementform.h \
+    plotform.h
 
 FORMS += \
-        mainwindow.ui
+        mainwindow.ui \
+    measurementform.ui \
+    plotform.ui
+
+INCLUDEPATH += ./qwt/build/include \
+./SoundCardReader
+
+
+LIBS += ./qwt/build/lib/libqwt.a \
+./SoundCardReader/bin/libSoundCardReader.a
