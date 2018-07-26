@@ -2,6 +2,8 @@
 #define CALIBRATIONFORM_H
 
 #include <QWidget>
+#include <QFile>
+#include <QTextStream>
 
 namespace Ui {
 class CalibrationForm;
@@ -16,10 +18,12 @@ public:
     ~CalibrationForm();
 
 signals:
-    //void signalGetIntegralValue();
+    void signalGetIntegral1Value();
+    void signalGetIntegral2Value();
 
 public slots:
-
+    void slotReceivedIntegral1Value(double value);
+    void slotReceivedIntegral2Value(double value);
 
 private slots:
     void on_calibPushButton_1_inf_clicked();
