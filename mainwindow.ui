@@ -30,10 +30,15 @@
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="evaluationTab">
+      <widget class="QWidget" name="calibrationTab">
        <attribute name="title">
-        <string>Evaluation</string>
+        <string>Calibration</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_4">
+        <item row="0" column="0">
+         <widget class="CalibrationForm" name="widget_2" native="true"/>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -65,6 +70,12 @@
    <class>MeasurementForm</class>
    <extends>QWidget</extends>
    <header>measurementform.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>CalibrationForm</class>
+   <extends>QWidget</extends>
+   <header>calibrationform.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

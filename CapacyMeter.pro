@@ -32,17 +32,20 @@ SOURCES += \
         main.cpp \
         mainwindow.cpp \
     measurementform.cpp \
-    plotform.cpp
+    plotform.cpp \
+    calibrationform.cpp
 
 HEADERS += \
         mainwindow.h \
     measurementform.h \
-    plotform.h
+    plotform.h \
+    calibrationform.h
 
 FORMS += \
         mainwindow.ui \
     measurementform.ui \
-    plotform.ui
+    plotform.ui \
+    calibrationform.ui
 
 INCLUDEPATH += ./qwt/build/include \
 ./SoundCardReader
