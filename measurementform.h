@@ -3,6 +3,8 @@
 
 #include <QWidget>
 #include <QInputDialog>
+#include <QFile>
+#include <QTextStream>
 
 #include "soundcardreader.h"
 
@@ -17,6 +19,11 @@ class MeasurementForm : public QWidget
 public:
     explicit MeasurementForm(QWidget *parent = 0);
     ~MeasurementForm();
+
+public slots:
+    void slotGetCalibInfo(QString info);
+    void slotApplyCalibCH1();
+    void slotApplyCalibCH2();
 
 private slots:
     void on_measurementPushButton_clicked();

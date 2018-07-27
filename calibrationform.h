@@ -2,8 +2,6 @@
 #define CALIBRATIONFORM_H
 
 #include <QWidget>
-#include <QFile>
-#include <QTextStream>
 
 namespace Ui {
 class CalibrationForm;
@@ -18,12 +16,12 @@ public:
     ~CalibrationForm();
 
 signals:
-    void signalGetIntegral1Value();
-    void signalGetIntegral2Value();
+    void signalSendCalibInfo(QString info);
+    void signalApplyCalibCH1();
+    void signalApplyCalibCH2();
 
 public slots:
-    void slotReceivedIntegral1Value(double value);
-    void slotReceivedIntegral2Value(double value);
+
 
 private slots:
     void on_calibPushButton_1_inf_clicked();
@@ -42,16 +40,8 @@ private slots:
 
     void on_applyCH2PushButton_clicked();
 
-    void on_follow1CheckBox_toggled(bool checked);
-
-    void on_follow2CheckBox_toggled(bool checked);
-
 private:
     Ui::CalibrationForm *ui;
-
-    bool follow1, autofollow1, follow2, autofollow2;
-    bool isClicked_1_inf, isClicked_1_6, isClicked_1_3;
-    bool isClicked_2_inf, isClicked_2_6, isClicked_2_3;
 };
 
 #endif // CALIBRATIONFORM_H

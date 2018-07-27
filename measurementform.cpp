@@ -49,6 +49,71 @@ MeasurementForm::~MeasurementForm()
     delete ui;
 }
 
+void MeasurementForm::slotGetCalibInfo(QString info)
+{
+    QFile outFile;
+    QTextStream out;
+
+    if(info == "1_inf"){
+        outFile.setFileName("calib1_inf.txt");
+        outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        out.setDevice(&outFile);
+        out << QString::number(integral1.second.first());
+        outFile.close();
+    }
+
+    if(info == "1_6"){
+        outFile.setFileName("calib1_6.txt");
+        outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        out.setDevice(&outFile);
+        out << QString::number(integral1.second.first());
+        outFile.close();
+    }
+
+    if(info == "1_3"){
+        outFile.setFileName("calib1_3.txt");
+        outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        out.setDevice(&outFile);
+        out << QString::number(integral1.second.first());
+        outFile.close();
+    }
+
+    if(info == "2_inf"){
+        outFile.setFileName("calib2_inf.txt");
+        outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        out.setDevice(&outFile);
+        out << QString::number(integral2.second.first());
+        outFile.close();
+    }
+
+    if(info == "2_6"){
+        outFile.setFileName("calib2_6.txt");
+        outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        out.setDevice(&outFile);
+        out << QString::number(integral2.second.first());
+        outFile.close();
+    }
+
+    if(info == "2_3"){
+        outFile.setFileName("calib2_3.txt");
+        outFile.open(QIODevice::WriteOnly | QIODevice::Text);
+        out.setDevice(&outFile);
+        out << QString::number(integral2.second.first());
+        outFile.close();
+    }
+
+}
+
+void MeasurementForm::slotApplyCalibCH1()
+{
+
+}
+
+void MeasurementForm::slotApplyCalibCH2()
+{
+
+}
+
 void MeasurementForm::on_measurementPushButton_clicked()
 {
     chooseAudioDevice();

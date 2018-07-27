@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="measurementTab">
        <attribute name="title">
@@ -26,7 +26,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="MeasurementForm" name="widget" native="true"/>
+         <widget class="MeasurementForm" name="measurementWidget" native="true"/>
         </item>
        </layout>
       </widget>
@@ -36,7 +36,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="CalibrationForm" name="widget_2" native="true"/>
+         <widget class="CalibrationForm" name="calibrationWidget" native="true"/>
         </item>
        </layout>
       </widget>
