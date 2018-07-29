@@ -6,7 +6,6 @@ MeasurementForm::MeasurementForm(QWidget *parent) :
     ui(new Ui::MeasurementForm)
 {
     ui->setupUi(this);
-   // ui->channel1Widget->setPlottingData("alma", QVector<double>{1, 2, 3}, QVector<double>{1, 3, 5}, QwtText("time"), QwtText("distance"), QColor(Qt::red), 0.0, 10.0, 0.0, 10.0);
 
     wave1List.clear();
     wave2List.clear();
@@ -138,7 +137,6 @@ void MeasurementForm::slotApplyCalibCH2()
 void MeasurementForm::on_measurementPushButton_clicked()
 {
     chooseAudioDevice();
-    sc->blockSignals(false);
     ui->stopPushButton->setEnabled(true);
     ui->savePushButton->setDisabled(true);
     ui->measurementPushButton->setDisabled(true);
@@ -332,7 +330,7 @@ void MeasurementForm::chooseAudioDevice()
     sc = new SoundCardReader(devices.at(deviceNames.indexOf(deviceName)), samplingFreq, samplingNum, this);
 
     connect(sc, &SoundCardReader::signalLastWave, this, &MeasurementForm::slotLastWave);
-    sc->blockSignals(true);
+    sc->blockSignals(false);
 
 }
 
