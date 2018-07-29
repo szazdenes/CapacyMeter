@@ -5,6 +5,9 @@
 #include <QInputDialog>
 #include <QFile>
 #include <QTextStream>
+#include <QDateTime>
+#include <QFile>
+#include <QFileDialog>
 
 #include "soundcardreader.h"
 
@@ -33,11 +36,15 @@ private slots:
 
     void on_stopPushButton_clicked();
 
+    void on_savePushButton_clicked();
+
 private:
     Ui::MeasurementForm *ui;
     void chooseAudioDevice();
     QPair<QVector<double>, QVector<double>> getNumericIntegral(QList<qint16> &dataList, int waveListSize);
     QVector<double> getAmplitude(int head, QVector<double> &value);
+    double findMin(QVector<double> data);
+    double findMax(QVector<double> data);
 
     double integralSamples;
     double integralStep;
@@ -59,6 +66,14 @@ private:
     double average1, average2;
     double correction1, correction2, c1, c2;
     bool follow1, autofollow1, follow2, autofollow2;
+    double triggerLevel, triggerTime;
+    QVector<double> longAmp1Data, longAmp2Data;
+    QVector<double> longMarkTime1Data, longMarkTime2Data;
+    QVector<double> longMarkValue1Data, longMarkValue2Data;
+    int qqq;
+    double joinNum;
+    double plottingNum;
+
 
 };
 
