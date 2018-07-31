@@ -16,8 +16,8 @@ MeasurementForm::MeasurementForm(QWidget *parent) :
     integralSamples = 10000;
     integralStep = 200;
     followParameter = 3900;//10000;
-    triggerLevel = 0.3; //mm
-    triggerTime = 0.5; //s
+    triggerLevel = 0.1; //mm
+    triggerTime = 1.0; //s
     joinNum = 1000; //ennyi jelet fűz össze
     plottingNum = 10; //ennyi signalonként plottol
 
