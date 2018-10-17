@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui svg multimedia
+QT       += core gui svg multimedia serialport
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -33,13 +33,15 @@ SOURCES += \
         mainwindow.cpp \
     measurementform.cpp \
     plotform.cpp \
-    calibrationform.cpp
+    calibrationform.cpp \
+    arduino.cpp
 
 HEADERS += \
         mainwindow.h \
     measurementform.h \
     plotform.h \
-    calibrationform.h
+    calibrationform.h \
+    arduino.h
 
 FORMS += \
         mainwindow.ui \

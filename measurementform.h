@@ -8,8 +8,10 @@
 #include <QDateTime>
 #include <QFile>
 #include <QFileDialog>
+#include <QDebug>
 
 #include "soundcardreader.h"
+#include "arduino.h"
 
 namespace Ui {
 class MeasurementForm;
@@ -37,6 +39,7 @@ private slots:
     void on_stopPushButton_clicked();
 
     void on_savePushButton_clicked();
+    void readSerial();
 
 private:
     Ui::MeasurementForm *ui;
@@ -73,6 +76,9 @@ private:
     int qqq;
     double joinNum;
     double plottingNum;
+
+    Arduino arduino;
+    QSerialPort serial;
 
 
 };

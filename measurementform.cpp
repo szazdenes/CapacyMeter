@@ -45,10 +45,15 @@ MeasurementForm::MeasurementForm(QWidget *parent) :
     follow2 = false;
     autofollow2 = false;
 
+   // arduino.setSerial(serial);
+
+
+
 }
 
 MeasurementForm::~MeasurementForm()
 {
+    arduino.closeSerial(serial);
     delete sc;
     delete ui;
 }
@@ -141,6 +146,13 @@ void MeasurementForm::on_measurementPushButton_clicked()
     ui->savePushButton->setDisabled(true);
     ui->measurementPushButton->setDisabled(true);
 
+    /*serial test*/
+    QString serialCommand = "ASP000 CTC:NTC.req cce8b98f";
+    arduino.writeSerial(serial, serialCommand);
+    QObject::connect(&serial, &QSerialPort::readyRead, this, &MeasurementForm::readSerial);
+    //serial.waitForBytesWritten();
+
+
 }
 
 void MeasurementForm::slotLastWave(QList<qint16> waveForm1, QList<qint16> waveForm2)
@@ -219,7 +231,7 @@ void MeasurementForm::slotLastWave(QList<qint16> waveForm1, QList<qint16> waveFo
 
         //calib1
 
-        if(autofollow1 == false && autoFollowDateTime1.addMSecs((int)triggerTime) < QDateTime::currentDateTime()) {
+        if(autofollow1 == false && autoFollowDateTime1.addMSecs(static_cast<int>(triggerTime)) < QDateTime::currentDateTime()) {
             c1 -= c1 + correction1 - integral1.second.at(0);
             average1List.clear();
             autofollow1 = true;
@@ -259,7 +271,7 @@ void MeasurementForm::slotLastWave(QList<qint16> waveForm1, QList<qint16> waveFo
 
         //calib2
 
-        if(autofollow2 == false && autoFollowDateTime2.addMSecs((int)triggerTime) < QDateTime::currentDateTime()) {
+        if(autofollow2 == false && autoFollowDateTime2.addMSecs(static_cast<int>(triggerTime)) < QDateTime::currentDateTime()) {
             c2 -= c2 + correction2 - integral2.second.at(0);
             average2List.clear();
             autofollow2 = true;
@@ -320,7 +332,7 @@ void MeasurementForm::chooseAudioDevice()
     QStringList deviceNames;
     for(int i = 0; i < devices.size(); i++)
         deviceNames.append(devices.at(i).deviceName());
-    QString deviceName = QInputDialog::getItem(0, "Device", "Device", deviceNames, 0, false);
+    QString deviceName = QInputDialog::getItem(nullptr, "Device", "Device", deviceNames, 0, false);
 
     if (deviceNames.indexOf(deviceName) < 0)
         return;
@@ -483,4 +495,9 @@ void MeasurementForm::on_savePushButton_clicked()
     out << "Ch2\t"; for (int i=0; i<longAmp2Data.size(); i++) out << QString::number(longAmp2Data.at(i)) + "\t"; out << "\n";
 
     file.close();
+}
+
+void MeasurementForm::readSerial()
+{
+    qDebug() << arduino.readSerial(serial);
 }

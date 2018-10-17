@@ -14,7 +14,7 @@ class plotForm : public QWidget
     Q_OBJECT
 
 public:
-    explicit plotForm(QWidget *parent = 0);
+    explicit plotForm(QWidget *parent = nullptr);
     ~plotForm();
 
     void setPlottingData(QString title, QVector<double> xdata, QVector<double> ydata, QwtText xtext, QwtText ytext, QColor color, double xmin, double xmax, double ymin, double ymax);
